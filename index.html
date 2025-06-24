@@ -50,7 +50,7 @@
     <link rel="stylesheet" href="css/app.css">
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
@@ -59,11 +59,29 @@
     <script src="js/app.js"></script>
 
     <style>
-        .slick-prev:before,
-        .slick-next:before {
-            color: black;
+.carousel-control-prev,
+.carousel-control-next {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.7;
+}
 
-        }
+.carousel-control-prev {
+    left: -60px; /* 将按钮放在图片左边外侧 */
+}
+
+.carousel-control-next {
+    right: -60px; /* 将按钮放在图片右边外侧 */
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 1;
+}
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
@@ -103,6 +121,14 @@
         .caption-row .image-wrapper p {
             margin-top: 10px;
         }
+        
+h3.text-center {
+    font-size: 28px; /* 增大字体 */
+    margin-top: 30px; /* 上方间距增加 */
+    margin-bottom: 20px;
+}
+
+
     </style>
 </head>
 
@@ -110,7 +136,7 @@
     <div class="container" id="main">
         <div class="row">
             <h2 class="col-md-12 text-center">
-                <b>WonderFree:</b>Enhancing Novel View Quality and Cross-View Consistency for 3D Scene Exploration</br>            
+                 <b><em>WonderFree</em>:</b> Enhancing Novel View Quality and Cross-View<br>Consistency for 3D Scene Exploration
             <small>
                 <!-- cvpr -->
             </small>
@@ -155,43 +181,43 @@
 
 
 
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4 text-center">
-                <ul class="nav nav-pills nav-justified" style="margin-top:10px">
-                <li>
-                    <!-- <a href=https://arxiv.org/abs/2410.13571> -->
-                     <a href=https://arxiv.org/pdf/2504.02261  >
-                    <image src="img/wonderturbo.png" height="60px"></image>
-                        <h4><strong>Paper</strong></h4>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://github.com/GigaAI-research/WonderTurbo">
-                    <image src="img/github.png" height="60px"></image>
-                        <h4><strong>Code</strong></h4>
-                    </a>
-                </li>
-                </ul>
-            </div>
-        </div>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3 text-center">
+        <ul class="nav nav-pills" style="margin-top:10px; display:flex; justify-content:space-around; padding:0;">
+            <li style="flex:1;">
+                <a href="https://arxiv.org/pdf/2504.02261" style="display:flex; flex-direction:column; align-items:center;">
+                    <img src="img/wonderturbo.png" height="60px">
+                    <h4><strong>Paper</strong></h4>
+                </a>
+            </li>
+            <li style="flex:1;">
+                <a href="https://github.com/GigaAI-research/WonderTurbo" style="display:flex; flex-direction:column; align-items:center;">
+                    <img src="img/github.png" height="60px">
+                    <h4><strong>Code</strong></h4>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
 
         <div class="row " style="margin-top:20px">
             <div class="col-md-8 col-md-offset-2 ">
-                <img src="./img/intro.png" width="100%" >
-                </img>
+                <img src="./img1/intro1.png" width="100%" >
+                <img>
             </div>
             <div class="col-md-8 col-md-offset-2 ">
                 <p class="text-center ">
-                    Beginning with a single image, users can freely adjust the viewpoint and interactively control the generation of a 3D scene, each interaction requiring only 0.72 seconds.
+                    We compare our method with WonderWorld~\cite{wonderworld} under novel views, including front and side perspectives. The black-box regions in WonderWorld~\cite{wonderworld} exhibit noticeable floaters and distortions, whereas <strong><em>WonderFree</em></strong> maintains clarity and visual consistency.
                 </p>
             </div>
             <div class="col-md-8 col-md-offset-2 ">
-                <img src="img/pipeline.png" width="100%" >
-                </img>
+                <img src="img1/pipeline.png" width="100%" >
+                <img>
             </div>
             <div class="col-md-8 col-md-offset-2 ">
                 <p class="text-center ">
-                    The pipeline of <b>WonderTurbo</b>. As the user moves the real-time rendering camera and inputs the text, the rendered image and depth map are then processed by <b>FastPaint</b> and <b>QuickDepth</b> to generate coherent geometry and appearance. Finally, <b>StepSplat</b> performs incremental fusion based on the outputs of <b>FastPaint</b> and <b>QuickDepth</b>.
+                    Overview of the <strong><em>WonderFree</em></strong> pipeline. <strong><em>WonderFree</em></strong> first builds a 3D world, then renders novel view videos along specified camera trajectories. WorldRestorer, equipped with the ConsistView mechanism, is applied to restore corrupted views while ensuring temporal coherence and spatial consistency. The restored videos are then used to refine the 3D world. This iterative process continues until the 3D world reaches a user-satisfactory level of visual quality and consistency.
                 </p>
             </div>
         </div>
@@ -200,22 +226,15 @@
 
         <div class="row ">
             <div class="col-md-8 col-md-offset-2 ">
-                <h3>
+                <!-- <h3>
                     Abstract
-                </h3>
+                </h3> -->
+                <h3 class="text-center mb-4">Abstract</h3>
                 <p class="text-justify ">
                     <body>
                         <p>
-                            Interactive 3D generation is gaining momentum and capturing extensive attention for its potential to create immersive virtual 
-                            experiences. However, a critical challenge in current 3D generation technologies lies in achieving real-time interactivity. 
-                            To address this issue, we introduce <strong>WonderTurbo</strong>, the first real-time interactive 3D scene generation framework capable of
-                            generating novel perspectives of 3D scenes within 0.72 seconds. Specifically, <strong>WonderTurbo</strong> accelerates both geometric and 
-                            appearance modeling in 3D scene generation. In terms of geometry, we propose StepSplat, an innovative method that constructs 
-                            efficient 3D geometric representations through dynamic updates, each taking only 0.26 seconds. Additionally, we design QuickDepth,
-                            a lightweight depth completion module that provides consistent depth input for StepSplat, further enhancing geometric accuracy.
-                            For appearance modeling, we develop FastPaint, a 2-steps diffusion model tailored for instant inpainting, which focuses 
-                            on maintaining spatial appearance consistency. Experimental results demonstrate that <strong>WonderTurbo</strong> achieves a remarkable 15x 
-                            speedup compared to baseline methods, while preserving excellent spatial consistency and delivering high-quality output.
+Interactive 3D scene generation from a single image has gained significant attention due to its potential to create immersive virtual worlds. However, a key challenge in current 3D generation methods is the limited explorability, which cannot render high-quality images during larger maneuvers beyond the original viewpoint, particularly when attempting to move forward into unseen areas.
+To address this challenge, we propose <em>WonderFree</em>, the first model that enables users to interactively generate 3D worlds with the freedom to explore from arbitrary angles and directions. Specifically, we decouple this challenge into two key subproblems: novel view quality, which addresses visual artifacts and floating issues in novel views, and cross-view consistency, which ensures spatial consistency across different viewpoints. To enhance rendering quality in novel views, we introduce WorldRestorer, a data-driven video restoration model designed to eliminate floaters and artifacts. In addition, a data collection pipeline is presented to automatically gather training data for WorldRestorer, ensuring it can handle scenes with varying styles needed for 3D scene generation. Furthermore, to improve cross-view consistency, we propose ConsistView, a multi-view joint restoration mechanism that simultaneously restores multiple perspectives while maintaining spatiotemporal coherence. Experimental results demonstrate that <em>WonderFree</em> not only enhances rendering quality across diverse viewpoints but also significantly improves global coherence and consistency. These improvements are confirmed by CLIP-based metrics and a user study showing a 77.20\% preference for <em>WonderFree</em> over WonderWorld, enabling a seamless and immersive 3D exploration experience. The code, model, and data will be publicly available.
                         </body>
                         </p>
                     </body>
@@ -224,43 +243,160 @@
         </div>
  
 
-        <div class="row ">
-            <div class="col-md-8 col-md-offset-2 ">
-                <h3>
-                    Comparisons
-                </h3>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <!-- <h3>
+                    WorldRestorer
+                </h3> -->
+                <h3 class="text-center mb-4">WorldRestorer</h3>
+                <p>
+                    To enhance the quality of novel-view renderings, <em>WonderFree</em> introduces WorldRestorer, a model trained on a video restoration dataset. WorldRestorer effectively mitigates artifacts and floating objects, significantly improving spatial consistency and structural fidelity across diverse scenes, thus delivering high-quality 3D experiences.
+                </p>
             </div>
-            <div class="row " style="margin-top:20px">
-                <div class="col-md-8 col-md-offset-2 ">
-                    <img src="./img/exp.png" width="100%" >
-                    </img>
+
+            <div class="row" style="margin-top:10px">
+                <div class="col-md-8 col-md-offset-2">
+                    <img src="./img1/restore.png" width="100%">
                 </div>
             </div>
         </div>
 
 
-        <div class="row ">
-            <div class="col-md-8 col-md-offset-2 ">
-                <h3>
-                    Qualitative examples
-                </h3>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <!-- <h3>
+                    ConsistView
+                </h3> -->
+                <h3 class="text-center mb-4">ConsistView</h3>
+                <p>
+                     To enhance multi-view consistency, <em>WonderFree</em> introduces ConsistView. As illustrated, incorporating ConsistView enables WorldRestorer to effectively recover missing content, remove floating artifacts, and significantly improve consistency across multiple views, even under challenging low-light conditions.
+                </p>
             </div>
-            <div class="row " style="margin-top:20px">
-                <div class="col-md-8 col-md-offset-2 ">
-                    <img src="./img/supply12_00.png" width="100%" >
-                    </img>
-                </div>
-                <div class="col-md-8 col-md-offset-2 ">
-                    <img src="./img/supply22_00.png" width="100%" >
-                    </img>
+
+            <div class="row" style="margin-top:10px">
+                <div class="col-md-8 col-md-offset-2">
+                    <img src="./img1/consistview.png" width="100%">
                 </div>
             </div>
         </div>
+
+
+        <div class="container mt-5">
+            
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <h3 class="text-center mb-4">Qualitative Examples</h3>
+                    <div id="qualitativeCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">
+
+                        <div class="carousel-inner rounded shadow">
+                            <div class="carousel-item active">
+                                <img src="img1\exp\3_00.png" class="d-block w-100" alt="Example 1">
+                                <img src="img1\exp\4_00.png" class="d-block w-100" alt="Example 1">
+                                <img src="img1\exp\5_00.png" class="d-block w-100" alt="Example 1">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img1\exp\6_00.png" class="d-block w-100" alt="Example 2">
+                                <img src="img1\exp\7_00.png" class="d-block w-100" alt="Example 2">
+                                <img src="img1\exp\8_00.png" class="d-block w-100" alt="Example 2">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img1\exp\9_00.png" class="d-block w-100" alt="Example 2">
+                                <img src="img1\exp\10_00.png" class="d-block w-100" alt="Example 2">
+                                <img src="img1\exp\11_00.png" class="d-block w-100" alt="Example 2">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img1\exp\12_00.png" class="d-block w-100" alt="Example 2">
+                                <img src="img1\exp\13_00.png" class="d-block w-100" alt="Example 2">
+                                <img src="img1\exp\14_00.png" class="d-block w-100" alt="Example 2">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img1\exp\17_00.png" class="d-block w-100" alt="Example 2">
+                                <img src="img1\exp\18_00.png" class="d-block w-100" alt="Example 2">
+                                <img src="img1\exp\19_00.png" class="d-block w-100" alt="Example 2">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img1\exp\20_00.png" class="d-block w-100" alt="Example 2">
+                                <img src="img1\exp\24_00.png" class="d-block w-100" alt="Example 2">
+                                <img src="img1\exp\23_00.png" class="d-block w-100" alt="Example 2">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img1\exp\28_00.png" class="d-block w-100" alt="Example 2">
+                                <img src="img1\exp\26_00.png" class="d-block w-100" alt="Example 2">
+                                <img src="img1\exp\27_00.png" class="d-block w-100" alt="Example 2">
+                            </div>
+                        </div>
+
+                        <a class="carousel-control-prev" href="#qualitativeCarousel" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#qualitativeCarousel" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+
+                        <ol class="carousel-indicators">
+                            <li data-target="#qualitativeCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#qualitativeCarousel" data-slide-to="1"></li>
+                        </ol>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
         
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <!-- <h3>
+                    ConsistView
+                </h3> -->
+                <h3 class="text-center mb-4">Coarse 3D World VS <em>WonderFree</em></h3>
+                <p>
+                     The video below shows a comparison between <em>WonderFree</em>'s refined 3D world and the coarse 3D world.
+                </p>
+            </div>
 
+        <div class="container" style="margin-top:10px;">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <video width="100%" height="auto" controls autoplay muted>
+                        <source src="./img1/2.mp4" type="video/mp4">
+                        您的浏览器不支持HTML5视频播放。
+                    </video>
+                </div>
+            </div>
+        </div>
+        </div>
 
+                <!-- <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+               <h3>
+                    ConsistView
+                </h3> -->
+                <!-- <h3 class="text-center mb-4">Coarse 3D World VS <em>WonderFree</em></h3>
+                <p>
+                     To enhance multi-view consistency, <em>WonderFree</em> introduces ConsistView. As illustrated, incorporating ConsistView enables WorldRestorer to effectively recover missing content, remove floating artifacts, and significantly improve consistency across multiple views, even under challenging low-light conditions.
+                </p>
+            </div> -->
+
+        <!-- <div class="container" style="margin-top:40px;">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <video width="100%" height="auto" controls autoplay muted>
+                        <source src="./img1/3.mp4" type="video/mp4">
+                        您的浏览器不支持HTML5视频播放。
+                    </video>
+                </div>
+            </div>
+        </div> -->
+        <!-- </div> -->
     </div>
-    <script>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+            
+    <!-- <script>
         document.getElementById('btnBox').addEventListener('click', function() {
             // 移除所有tab的active类
             document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
@@ -284,7 +420,7 @@
             // 隐藏Box视频
             document.querySelectorAll('.image-row[id^="box"]').forEach(video => video.classList.add('hidden'));
         });
-        </script>
+        </script> -->
 </body>
 
 </html>
